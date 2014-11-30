@@ -2,27 +2,26 @@ require 'action_mailer'
 
 module FlowdockNotification
 
-  class Notify < ActionMailer::Base
+  class Notify
     attr_accessor :subject, :body
 
-    def initialize(subject: "", body: "")
+    def initialize(subject= "", body= "")
       @body    = body
       @subject = subject
     end
 
     def send_notification
-      mail mailer_details do |format|
-        format.text { render text: body }
-      end
+      FlowdockNotification::SendEmail.send_notification(mailer_details, body)
     end
 
     def mailer_details
       {
-        to:      FlowdockNotification.config.notofication_to,
-        from:    FlowdockNotification.config.notofication_from,
+        to:      FlowdockNotification.config.notification_to,
+        from:    FlowdockNotification.config.notification_from,
         subject: subject
       }
     end
+
   end
 
 end
