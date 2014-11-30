@@ -1,12 +1,11 @@
 module FlowdockNotification
   class Config
 
-    attr_accessor :notofication_from
-    attr_accessor :notofication_to
+    attr_accessor :notification_from, :notification_to
 
     def initialize
-      @notofication_from = ENV['FLOWDOCK_NOTIFICATION_FROM']
-      @notofication_to = ENV['FLOWDOCK_NOTIFICATION_TO']
+      @notification_from = ENV['FLOWDOCK_NOTIFICATION_FROM']
+      @notification_to = ENV['FLOWDOCK_NOTIFICATION_TO']
     end
 
   end

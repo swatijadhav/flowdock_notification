@@ -16,9 +16,25 @@ Or install it yourself as:
 
     $ gem install flowdock_notification
 
-## Usage
+## Configuration
 
-TODO: Write usage instructions here
+To send notification to your flowdock group, you will need email-address of flowdock group. You can get it from flow-settings of your group.
+
+(Rails) Create config/initializers/flowdock_notification.rb
+
+```ruby
+FlowdockNotification.configure do |config|
+  config.notification_from = "test@example.com"
+  config.notification_to = "test@test.flowdock.com"
+end
+```
+
+Alternatively, set environment variables before loading the gem:
+
+```shell
+FLOWDOCK_NOTIFICATION_FROM=test@example.com
+FLOWDOCK_NOTIFICATION_TO=test@test.flowdock.com
+```
 
 ## Contributing
 
@@ -27,3 +43,7 @@ TODO: Write usage instructions here
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
+
+## Authors / Credits
+
+* Swati Jadhav (@swatijadhav)
